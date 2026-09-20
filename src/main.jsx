@@ -5,6 +5,7 @@ import heroImage1 from './Asset/Hero/dump runner hero section image (1).png';
 import heroImage2 from './Asset/Hero/dump runner hero section image (2).png';
 import heroImage3 from './Asset/Hero/dump runner hero section image (3).png';
 import heroImage4 from './Asset/Hero/dump runner hero section image (4).png';
+import BusinessServices from './pages/BusinessServices';
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
@@ -19,6 +20,7 @@ const heroImages = [heroImage2, heroImage1, heroImage3, heroImage4];
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHero, setActiveHero] = useState(0);
+  const isBusinessPage = window.location.pathname.replace(/\/$/, '') === '/business-services';
 
   useEffect(() => {
     const timer = window.setInterval(() => setActiveHero((current) => (current + 1) % heroImages.length), 5000);
@@ -49,7 +51,7 @@ function App() {
           </button>
           <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`}>
             <a href="https://www.1800gotjunk.com.au/au_en/how-our-pricing-works" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Pricing</a>
-            <a href="https://www.1800gotjunk.com.au/au_en/Commercial/Commercial_Services" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Business Services</a>
+            <a href="/business-services" onClick={() => setMenuOpen(false)}>Business Services</a>
             <a href="https://www.1800gotjunk.com.au/au_en/frequently-asked-questions" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>FAQ</a>
             <a href="https://www.1800gotjunk.com.au/au_en/reviews" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Reviews</a>
             <a href="https://jobs.1800gotjunk.com/au_en" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Careers</a>
@@ -59,7 +61,8 @@ function App() {
         </div>
       </header>
 
-      <main id="home">
+      <main id={isBusinessPage ? 'business-page-main' : 'home'}>
+        {isBusinessPage ? <BusinessServices /> : <>
         <section className="hero">
           <div className="hero-pattern"></div>
           <div className="container hero-content">
@@ -120,6 +123,7 @@ function App() {
         <section className="trust-section" id="reviews"><div className="container trust-inner"><div><p className="eyebrow">WHY DUMP RUNNERZ</p><h2>A cleaner job from start to finish.</h2></div><div className="trust-points"><div><strong>4.9/5</strong><span>Customer rating</span></div><div><strong>100%</strong><span>Upfront quotes</span></div><div><strong>0%</strong><span>Heavy lifting for you</span></div></div></div></section>
 
         <section className="cta-section" id="contact"><div className="container cta-inner"><div><p className="eyebrow">LET’S GET STARTED</p><h2>Your unwanted stuff is<br /><em>our next job.</em></h2></div><a className="button button-primary" href="#booking">Book your pick-up <Arrow /></a></div></section>
+        </>}
       </main>
 
       <footer className="site-footer"><div className="container footer-inner"><a className="footer-brand" href="#home"><img src="/dump-runnerz-logo.jpeg" alt="DUMP RUNNERZ" /></a><p>Fast, reliable junk removal for homes and businesses.</p><a href="tel:1800555867">1800 555 867</a><span>© 2026 DUMP RUNNERZ. All rights reserved.</span></div></footer>
