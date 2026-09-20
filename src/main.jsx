@@ -6,6 +6,9 @@ import heroImage2 from './Asset/Hero/dump runner hero section image (2).png';
 import heroImage3 from './Asset/Hero/dump runner hero section image (3).png';
 import heroImage4 from './Asset/Hero/dump runner hero section image (4).png';
 import BusinessServices from './pages/BusinessServices';
+import BookAppointment from './pages/BookAppointment';
+import AuthPage from './pages/AuthPage';
+import AdminPage from './pages/AdminPage';
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
@@ -20,12 +23,35 @@ const heroImages = [heroImage2, heroImage1, heroImage3, heroImage4];
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHero, setActiveHero] = useState(0);
+  const [currentUser, setCurrentUser] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('dumpRunnerzUser') || 'null'); } catch { return null; }
+  });
   const isBusinessPage = window.location.pathname.replace(/\/$/, '') === '/business-services';
+  const isBookingPage = window.location.pathname.replace(/\/$/, '') === '/book-appointment';
+  const isRegisterPage = window.location.pathname.replace(/\/$/, '') === '/register';
+  const isSignInPage = window.location.pathname.replace(/\/$/, '') === '/sign-in';
+  const isAdminPage = window.location.pathname.replace(/\/$/, '') === '/admin';
 
   useEffect(() => {
     const timer = window.setInterval(() => setActiveHero((current) => (current + 1) % heroImages.length), 5000);
     return () => window.clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const syncUser = () => {
+      try { setCurrentUser(JSON.parse(localStorage.getItem('dumpRunnerzUser') || 'null')); } catch { setCurrentUser(null); }
+    };
+    window.addEventListener('storage', syncUser);
+    return () => window.removeEventListener('storage', syncUser);
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem('dumpRunnerzToken');
+    localStorage.removeItem('dumpRunnerzUser');
+    setCurrentUser(null);
+    setMenuOpen(false);
+    window.location.href = '/';
+  };
 
   return (
     <div className="site-shell">
@@ -55,14 +81,14 @@ function App() {
             <a href="https://www.1800gotjunk.com.au/au_en/frequently-asked-questions" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>FAQ</a>
             <a href="https://www.1800gotjunk.com.au/au_en/reviews" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Reviews</a>
             <a href="https://jobs.1800gotjunk.com/au_en" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Careers</a>
-            <a href="https://request.1800gotjunk.com.au/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Book An Appointment</a>
-            <a href="https://account.1800gotjunk.com/en_au/?auth0ScreenHint=login" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Sign In</a>
+            <a href="/book-appointment" onClick={() => setMenuOpen(false)}>Book An Appointment</a>
+            {currentUser ? <><span className="nav-user">Hi, {currentUser.name}</span><button className="nav-logout" type="button" onClick={logout}>Logout</button></> : <a href="/sign-in" onClick={() => setMenuOpen(false)}>Sign In</a>}
           </nav>
         </div>
       </header>
 
-      <main id={isBusinessPage ? 'business-page-main' : 'home'}>
-        {isBusinessPage ? <BusinessServices /> : <>
+      <main id={isBusinessPage ? 'business-page-main' : isBookingPage ? 'book-appointment-main' : isSignInPage || isRegisterPage ? 'auth-page-main' : isAdminPage ? 'admin-page-main' : 'home'}>
+        {isBusinessPage ? <BusinessServices /> : isBookingPage ? <BookAppointment /> : isSignInPage || isRegisterPage ? <AuthPage initialMode={isRegisterPage ? 'register' : 'login'} /> : isAdminPage ? <AdminPage /> : <>
         <section className="hero">
           <div className="hero-pattern"></div>
           <div className="container hero-content">

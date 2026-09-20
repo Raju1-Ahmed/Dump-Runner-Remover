@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import './business-services.css';
-import commercialHero from '../Asset/Hero/dump runner hero section image (2).png';
-import commercialTeam from '../Asset/Hero/dump runner hero section image (3).png';
-import cleanoutImage from '../Asset/Hero/dump runner hero section image (1).png';
-import renovationImage from '../Asset/Hero/dump runner hero section image (4).png';
+import commercialHero from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_51_39 PM.png';
+import propertyImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_56_22 PM.png';
+import renovationImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_57_55 PM.png';
+import furnitureImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 02_00_17 PM.png';
 
 const businessServices = [
   ['▦', 'Office Cleanouts', 'Remove unwanted furniture, equipment, clutter and general office waste quickly and efficiently.'],
@@ -26,9 +26,9 @@ const benefits = [
 ];
 
 const showcases = [
-  [cleanoutImage, 'Office Clearance', 'Clear furniture, equipment and unwanted office items.'],
-  [commercialHero, 'Retail Cleanout', 'Make room for new stock, fixtures or a fresh fit-out.'],
-  [commercialTeam, 'Property Cleanup', 'Prepare apartments, rentals and commercial spaces.'],
+  [commercialHero, 'Office Clearance', 'Clear furniture, equipment and unwanted office items.'],
+  [furnitureImage, 'Retail Cleanout', 'Make room for new stock, fixtures or a fresh fit-out.'],
+  [propertyImage, 'Property Cleanup', 'Prepare apartments, rentals and commercial spaces.'],
   [renovationImage, 'Renovation Waste', 'Remove building debris and unwanted project materials.'],
 ];
 
@@ -80,7 +80,7 @@ export default function BusinessServices() {
 
       <section className="business-benefits-section"><div className="container"><div className="business-section-heading benefits-heading"><div><p className="business-kicker red">A BETTER WAY TO CLEAR OUT</p><h2>Why businesses<br /><em>choose us.</em></h2></div><p>Professional support that keeps your people productive and your spaces ready for what comes next.</p></div><div className="benefits-grid">{benefits.map(([icon, title, text]) => <div className="benefit-item" key={title}><span>{icon}</span><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></div></section>
 
-      <section className="productivity-section"><div className="container productivity-grid"><div className="productivity-image"><img src={commercialTeam} alt="DUMP RUNNERZ team clearing commercial furniture" loading="lazy" /></div><div className="productivity-copy"><p className="business-kicker red">LESS CLUTTER. MORE PRODUCTIVITY.</p><h2>Let Your Team<br /><em>Focus on Business</em></h2><p>Your employees should be focused on running your business, not moving heavy furniture, clearing unwanted items or dealing with rubbish. Let our team handle the removal while your team gets back to work.</p><a className="button button-primary" href="#commercial-quote">Request a Free Quote <span>↗</span></a></div></div></section>
+      <section className="productivity-section"><div className="container productivity-grid"><div className="productivity-image"><img src={propertyImage} alt="DUMP RUNNERZ team clearing commercial furniture" loading="lazy" /></div><div className="productivity-copy"><p className="business-kicker red">LESS CLUTTER. MORE PRODUCTIVITY.</p><h2>Let Your Team<br /><em>Focus on Business</em></h2><p>Your employees should be focused on running your business, not moving heavy furniture, clearing unwanted items or dealing with rubbish. Let our team handle the removal while your team gets back to work.</p><a className="button button-primary" href="#commercial-quote">Request a Free Quote <span>↗</span></a></div></div></section>
 
       <section className="showcase-section"><div className="container"><div className="centered-business-heading"><p className="business-kicker red">ONE TEAM. MANY SOLUTIONS.</p><h2>Commercial Rubbish Removal<br /><em>for Every Business</em></h2></div><div className="showcase-grid">{showcases.map(([image, title, text]) => <a href="#commercial-booking" className="showcase-card" key={title}><img src={image} alt={`${title} rubbish removal service`} loading="lazy" /><span className="showcase-shade"></span><div><h3>{title}</h3><p>{text}</p><span className="showcase-arrow">↗</span></div></a>)}</div></div></section>
 
