@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './admin-page.css';
 import { LoadingScreen } from '../components/AppFeedback';
 
-const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+const API = import.meta.env.VITE_API_URL || 'https://dump-runner-remover-server.onrender.com';
 
 async function apiRequest(path, options = {}) {
   const response = await fetch(`${API}${path}`, { ...options, headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('dumpRunnerzToken') || ''}`, ...options.headers } });

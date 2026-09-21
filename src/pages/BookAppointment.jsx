@@ -46,7 +46,7 @@ export default function BookAppointment() {
         const token = localStorage.getItem('dumpRunnerzToken');
         const headers = { 'Content-Type': 'application/json' };
         if (token) headers.Authorization = `Bearer ${token}`;
-        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000'}/api/bookings`, { method: 'POST', headers, body: JSON.stringify({ service: booking.service, date: booking.date, dateLabel: selectedDateLabel, time: booking.time, ...form }) });
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://dump-runner-remover-server.onrender.com'}/api/bookings`, { method: 'POST', headers, body: JSON.stringify({ service: booking.service, date: booking.date, dateLabel: selectedDateLabel, time: booking.time, ...form }) });
         const data = await response.json().catch(() => ({}));
         if (!response.ok) throw new Error(data.message || 'Unable to save your booking.');
         setSubmitted(true);

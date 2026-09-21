@@ -4,7 +4,7 @@ import './contact-us-page.css';
 const subjects = ['General Inquiry', 'Junk Removal Estimate', 'Existing Appointment', 'Commercial Services', 'Other'];
 
 const initialForm = { name: '', email: '', phone: '', subject: '', message: '' };
-const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+const API = import.meta.env.VITE_API_URL || 'https://dump-runner-remover-server.onrender.com';
 
 function Arrow() { return <span aria-hidden="true">↗</span>; }
 

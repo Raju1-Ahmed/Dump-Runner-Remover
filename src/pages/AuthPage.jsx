@@ -36,7 +36,7 @@ export default function AuthPage({ initialMode = 'login' }) {
 
     setLoading(true);
     try {
-      const apiBase = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+      const apiBase = import.meta.env.VITE_API_URL || 'https://dump-runner-remover-server.onrender.com';
       const endpoint = mode === 'login' ? '/api/auth/login' : '/api/auth/register';
       const payload = mode === 'login'
         ? { email: form.email, password: form.password }
