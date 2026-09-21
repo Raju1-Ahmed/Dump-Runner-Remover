@@ -9,6 +9,13 @@ import BusinessServices from './pages/BusinessServices';
 import BookAppointment from './pages/BookAppointment';
 import AuthPage from './pages/AuthPage';
 import AdminPage from './pages/AdminPage';
+import PricingPage from './pages/PricingPage';
+import FaqPage from './pages/FaqPage';
+import WhatWeDoPage from './pages/WhatWeDoPage';
+import WhatWeTakePage from './pages/WhatWeTakePage';
+import ContactUsPage from './pages/ContactUsPage';
+import NotFoundPage from './pages/NotFoundPage';
+import { AppErrorBoundary, LoadingScreen } from './components/AppFeedback';
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
@@ -20,17 +27,32 @@ const services = [
 ];
 const heroImages = [heroImage2, heroImage1, heroImage3, heroImage4];
 
+function getStoredUser() {
+  if (!localStorage.getItem('dumpRunnerzToken')) return null;
+  try { return JSON.parse(localStorage.getItem('dumpRunnerzUser') || 'null'); } catch { return null; }
+}
+
 function App() {
+  const [appLoading, setAppLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHero, setActiveHero] = useState(0);
-  const [currentUser, setCurrentUser] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('dumpRunnerzUser') || 'null'); } catch { return null; }
-  });
+  const [currentUser, setCurrentUser] = useState(getStoredUser);
   const isBusinessPage = window.location.pathname.replace(/\/$/, '') === '/business-services';
   const isBookingPage = window.location.pathname.replace(/\/$/, '') === '/book-appointment';
   const isRegisterPage = window.location.pathname.replace(/\/$/, '') === '/register';
   const isSignInPage = window.location.pathname.replace(/\/$/, '') === '/sign-in';
   const isAdminPage = window.location.pathname.replace(/\/$/, '') === '/admin';
+  const isPricingPage = window.location.pathname.replace(/\/$/, '') === '/pricing';
+  const isFaqPage = window.location.pathname.replace(/\/$/, '') === '/faq';
+  const isWhatWeDoPage = window.location.pathname.replace(/\/$/, '') === '/what-we-do';
+  const isWhatWeTakePage = window.location.pathname.replace(/\/$/, '') === '/what-we-take';
+  const isContactUsPage = window.location.pathname.replace(/\/$/, '') === '/contact-us';
+  const knownPage = ['', '/business-services', '/book-appointment', '/register', '/sign-in', '/admin', '/pricing', '/faq', '/what-we-do', '/what-we-take', '/contact-us'].includes(window.location.pathname.replace(/\/$/, ''));
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setAppLoading(false), 450);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const timer = window.setInterval(() => setActiveHero((current) => (current + 1) % heroImages.length), 5000);
@@ -39,19 +61,24 @@ function App() {
 
   useEffect(() => {
     const syncUser = () => {
-      try { setCurrentUser(JSON.parse(localStorage.getItem('dumpRunnerzUser') || 'null')); } catch { setCurrentUser(null); }
+      setCurrentUser(getStoredUser());
     };
     window.addEventListener('storage', syncUser);
-    return () => window.removeEventListener('storage', syncUser);
+    window.addEventListener('dumpRunnerz-auth-change', syncUser);
+    window.addEventListener('pageshow', syncUser);
+    return () => { window.removeEventListener('storage', syncUser); window.removeEventListener('dumpRunnerz-auth-change', syncUser); window.removeEventListener('pageshow', syncUser); };
   }, []);
 
   const logout = () => {
     localStorage.removeItem('dumpRunnerzToken');
     localStorage.removeItem('dumpRunnerzUser');
+    window.dispatchEvent(new Event('dumpRunnerz-auth-change'));
     setCurrentUser(null);
     setMenuOpen(false);
     window.location.href = '/';
   };
+
+  if (appLoading) return <LoadingScreen message="Preparing your clean space…" />;
 
   return (
     <div className="site-shell">
@@ -60,35 +87,34 @@ function App() {
           <a className="top-phone" href="tel:1800555867">1800 555 867</a>
           <span className="top-message">Fast, friendly junk removal when you need it.</span>
           <nav className="top-nav" aria-label="Quick navigation">
-            <a href="#services">What We Do</a>
-            <a href="#what-we-take">What We Take</a>
-            <a href="#how-it-works">How It Works</a>
+            <a href="/what-we-do">What We Do</a>
+            <a href="/what-we-take">What We Take</a>
           </nav>
         </div>
       </div>
 
       <header className="site-header">
         <div className="container nav-wrap">
-          <a className="brand" href="#home" aria-label="DUMP RUNNERZ home">
+          <a className="brand" href="/" aria-label="DUMP RUNNERZ home">
             <img src="/dump-runnerz-logo.jpeg" alt="DUMP RUNNERZ Junk Removal" />
           </a>
           <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation" aria-expanded={menuOpen}>
             <span></span><span></span><span></span>
           </button>
           <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`}>
-            <a href="https://www.1800gotjunk.com.au/au_en/how-our-pricing-works" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Pricing</a>
+            <a href="/pricing" onClick={() => setMenuOpen(false)}>Pricing</a>
             <a href="/business-services" onClick={() => setMenuOpen(false)}>Business Services</a>
-            <a href="https://www.1800gotjunk.com.au/au_en/frequently-asked-questions" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>FAQ</a>
-            <a href="https://www.1800gotjunk.com.au/au_en/reviews" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Reviews</a>
-            <a href="https://jobs.1800gotjunk.com/au_en" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Careers</a>
+            <a href="/about-us" onClick={() => setMenuOpen(false)}>About Us</a>
+            <a href="/contact-us" onClick={() => setMenuOpen(false)}>Contact Us</a>
+            <a href="/faq" onClick={() => setMenuOpen(false)}>FAQ</a>
             <a href="/book-appointment" onClick={() => setMenuOpen(false)}>Book An Appointment</a>
             {currentUser ? <><span className="nav-user">Hi, {currentUser.name}</span><button className="nav-logout" type="button" onClick={logout}>Logout</button></> : <a href="/sign-in" onClick={() => setMenuOpen(false)}>Sign In</a>}
           </nav>
         </div>
       </header>
 
-      <main id={isBusinessPage ? 'business-page-main' : isBookingPage ? 'book-appointment-main' : isSignInPage || isRegisterPage ? 'auth-page-main' : isAdminPage ? 'admin-page-main' : 'home'}>
-        {isBusinessPage ? <BusinessServices /> : isBookingPage ? <BookAppointment /> : isSignInPage || isRegisterPage ? <AuthPage initialMode={isRegisterPage ? 'register' : 'login'} /> : isAdminPage ? <AdminPage /> : <>
+      <main id={isBusinessPage ? 'business-page-main' : isBookingPage ? 'book-appointment-main' : isSignInPage || isRegisterPage ? 'auth-page-main' : isAdminPage ? 'admin-page-main' : isPricingPage ? 'pricing-page-main' : isFaqPage ? 'faq-page-main' : isWhatWeDoPage ? 'what-we-do-page-main' : isWhatWeTakePage ? 'what-we-take-page-main' : isContactUsPage ? 'contact-us-page-main' : knownPage ? 'home' : 'not-found-page-main'}>
+        {isBusinessPage ? <BusinessServices /> : isBookingPage ? <BookAppointment /> : isSignInPage || isRegisterPage ? <AuthPage initialMode={isRegisterPage ? 'register' : 'login'} /> : isAdminPage ? <AdminPage /> : isPricingPage ? <PricingPage /> : isFaqPage ? <FaqPage /> : isWhatWeDoPage ? <WhatWeDoPage /> : isWhatWeTakePage ? <WhatWeTakePage /> : isContactUsPage ? <ContactUsPage /> : knownPage ? <>
         <section className="hero">
           <div className="hero-pattern"></div>
           <div className="container hero-content">
@@ -149,12 +175,12 @@ function App() {
         <section className="trust-section" id="reviews"><div className="container trust-inner"><div><p className="eyebrow">WHY DUMP RUNNERZ</p><h2>A cleaner job from start to finish.</h2></div><div className="trust-points"><div><strong>4.9/5</strong><span>Customer rating</span></div><div><strong>100%</strong><span>Upfront quotes</span></div><div><strong>0%</strong><span>Heavy lifting for you</span></div></div></div></section>
 
         <section className="cta-section" id="contact"><div className="container cta-inner"><div><p className="eyebrow">LET’S GET STARTED</p><h2>Your unwanted stuff is<br /><em>our next job.</em></h2></div><a className="button button-primary" href="#booking">Book your pick-up <Arrow /></a></div></section>
-        </>}
+        </> : <NotFoundPage />}
       </main>
 
-      <footer className="site-footer"><div className="container footer-inner"><a className="footer-brand" href="#home"><img src="/dump-runnerz-logo.jpeg" alt="DUMP RUNNERZ" /></a><p>Fast, reliable junk removal for homes and businesses.</p><a href="tel:1800555867">1800 555 867</a><span>© 2026 DUMP RUNNERZ. All rights reserved.</span></div></footer>
+      <footer className="site-footer"><div className="container footer-inner"><a className="footer-brand" href="/"><img src="/dump-runnerz-logo.jpeg" alt="DUMP RUNNERZ" /></a><p>Fast, reliable junk removal for homes and businesses.</p><a href="tel:1800555867">1800 555 867</a><span>© 2026 DUMP RUNNERZ. All rights reserved.</span></div></footer>
     </div>
   );
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+createRoot(document.getElementById('root')).render(<AppErrorBoundary><App /></AppErrorBoundary>);

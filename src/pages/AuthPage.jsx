@@ -42,10 +42,11 @@ export default function AuthPage({ initialMode = 'login' }) {
         ? { email: form.email, password: form.password }
         : { name: form.name, email: form.email, password: form.password };
       const response = await fetch(`${apiBase}${endpoint}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.message || 'Unable to continue. Please try again.');
       localStorage.setItem('dumpRunnerzToken', data.token);
       localStorage.setItem('dumpRunnerzUser', JSON.stringify(data.user));
+      window.dispatchEvent(new Event('dumpRunnerz-auth-change'));
       setSubmitted(true);
       window.setTimeout(() => { window.location.href = '/book-appointment'; }, 450);
     } catch (requestError) {

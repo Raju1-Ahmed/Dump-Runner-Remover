@@ -15,6 +15,8 @@ export default function BookAppointment() {
   const [booking, setBooking] = useState({ service: '', date: '', time: '' });
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', address: '', suburb: '', state: '', notes: '', consent: false });
   const [submitted, setSubmitted] = useState(false);
+  const [bookingError, setBookingError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const today = new Date().toISOString().slice(0, 10);
 
   const selectedDateLabel = booking.date ? formatDate(new Date(`${booking.date}T12:00:00`)) : '';
@@ -34,22 +36,22 @@ export default function BookAppointment() {
     if (booking.service && booking.date && booking.time) setStep(3);
   };
 
-  const submitBooking = (event) => {
+  const submitBooking = async (event) => {
     event.preventDefault();
+    if (submitting) return;
+    setBookingError('');
     if (form.firstName && form.lastName && form.email && form.phone && form.address && form.consent) {
-      const bookingRecord = {
-        id: `DR-${Date.now().toString().slice(-6)}`,
-        createdAt: new Date().toISOString(),
-        status: 'New',
-        service: booking.service,
-        date: booking.date,
-        dateLabel: selectedDateLabel,
-        time: booking.time,
-        ...form,
-      };
-      const existingBookings = JSON.parse(localStorage.getItem(BOOKINGS_KEY) || '[]');
-      localStorage.setItem(BOOKINGS_KEY, JSON.stringify([bookingRecord, ...existingBookings]));
-      setSubmitted(true);
+      setSubmitting(true);
+      try {
+        const token = localStorage.getItem('dumpRunnerzToken');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers.Authorization = `Bearer ${token}`;
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000'}/api/bookings`, { method: 'POST', headers, body: JSON.stringify({ service: booking.service, date: booking.date, dateLabel: selectedDateLabel, time: booking.time, ...form }) });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.message || 'Unable to save your booking.');
+        setSubmitted(true);
+      } catch (requestError) { setBookingError(requestError.message || 'We could not save your booking. Please try again.'); }
+      finally { setSubmitting(false); }
     }
   };
 
@@ -58,6 +60,7 @@ export default function BookAppointment() {
       <section className="booking-intro"><div className="container booking-intro-inner"><p className="booking-kicker">DUMP RUNNERZ BOOKING</p><h1>Book your rubbish<br /><em>removal pickup.</em></h1><p>Choose a time that works for you. We’ll handle the heavy lifting from there.</p></div></section>
       <section className="booking-workspace"><div className="container booking-layout">
         <div className="booking-card">
+          {bookingError && <div className="booking-operation-error" role="alert">{bookingError}</div>}
           <div className="booking-steps" aria-label="Booking progress">
             {[['01', 'Check Availability'], ['02', 'Choose Appointment'], ['03', 'Enter Pick-Up Details']].map(([number, label], index) => <div className={`booking-step ${step === index + 1 ? 'active' : ''} ${step > index + 1 || submitted ? 'complete' : ''}`} key={number}><span>{step > index + 1 || submitted ? '✓' : number}</span><strong>{label}</strong></div>)}
           </div>
