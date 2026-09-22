@@ -25,6 +25,18 @@ import AboutUsPage from './pages/AboutUsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { AppErrorBoundary, LoadingScreen } from './components/AppFeedback';
 
+const ANALYTICS_API = import.meta.env.VITE_API_URL || 'https://dump-runner-remover-server.onrender.com';
+const ANALYTICS_SESSION_TIMEOUT = 30 * 60 * 1000;
+const analyticsId = (key) => { let value = localStorage.getItem(key); if (!value) { value = window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`; localStorage.setItem(key, value); } return value; };
+const trackPageView = () => {
+  try {
+    const visitorId = analyticsId('dumpRunnerzVisitorId'); const now = Date.now(); let sessionId = sessionStorage.getItem('dumpRunnerzSessionId'); const lastActivity = Number(sessionStorage.getItem('dumpRunnerzSessionActivity') || 0);
+    if (!sessionId || now - lastActivity > ANALYTICS_SESSION_TIMEOUT) { sessionId = window.crypto?.randomUUID?.() || `${now}-${Math.random().toString(36).slice(2)}`; sessionStorage.setItem('dumpRunnerzSessionId', sessionId); }
+    sessionStorage.setItem('dumpRunnerzSessionActivity', String(now)); const params = new URLSearchParams(window.location.search);
+    fetch(`${ANALYTICS_API}/api/track`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ visitorId, sessionId, pagePath: `${window.location.pathname}${window.location.search}`, pageTitle: document.title, referrer: document.referrer || 'Direct', language: navigator.language, utmSource: params.get('utm_source') || undefined, utmMedium: params.get('utm_medium') || undefined, utmCampaign: params.get('utm_campaign') || undefined }), keepalive: true }).catch(() => {});
+  } catch { /* Analytics must never interrupt the public website. */ }
+};
+
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
 const services = [
@@ -69,6 +81,7 @@ function App() {
     const timer = window.setTimeout(() => setAppLoading(false), 450);
     return () => window.clearTimeout(timer);
   }, []);
+  useEffect(() => { trackPageView(); }, []);
 
   useEffect(() => {
     const timer = window.setInterval(() => setActiveHero((current) => (current + 1) % heroImages.length), 5000);
