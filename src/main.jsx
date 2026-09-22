@@ -23,6 +23,7 @@ import WhatWeTakePage from './pages/WhatWeTakePage';
 import ContactUsPage from './pages/ContactUsPage';
 import AboutUsPage from './pages/AboutUsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import LegalPage from './pages/LegalPage';
 import { AppErrorBoundary, LoadingScreen } from './components/AppFeedback';
 
 const ANALYTICS_API = import.meta.env.VITE_API_URL || 'https://dump-runner-remover-server.onrender.com';
@@ -75,7 +76,9 @@ function App() {
   const isWhatWeTakePage = window.location.pathname.replace(/\/$/, '') === '/what-we-take';
   const isContactUsPage = window.location.pathname.replace(/\/$/, '') === '/contact-us';
   const isAboutUsPage = window.location.pathname.replace(/\/$/, '') === '/about-us';
-  const knownPage = ['', '/business-services', '/book-appointment', '/register', '/sign-in', '/admin', '/pricing', '/faq', '/what-we-do', '/what-we-take', '/contact-us', '/about-us'].includes(window.location.pathname.replace(/\/$/, ''));
+  const isPrivacyPage = window.location.pathname.replace(/\/$/, '') === '/privacy-policy';
+  const isTermsPage = window.location.pathname.replace(/\/$/, '') === '/terms-and-conditions';
+  const knownPage = ['', '/business-services', '/book-appointment', '/register', '/sign-in', '/admin', '/pricing', '/faq', '/what-we-do', '/what-we-take', '/contact-us', '/about-us', '/privacy-policy', '/terms-and-conditions'].includes(window.location.pathname.replace(/\/$/, ''));
 
   useEffect(() => {
     const timer = window.setTimeout(() => setAppLoading(false), 450);
@@ -143,7 +146,7 @@ function App() {
       </header>
 
       <main id={isBusinessPage ? 'business-page-main' : isBookingPage ? 'book-appointment-main' : isSignInPage || isRegisterPage ? 'auth-page-main' : isAdminPage ? 'admin-page-main' : isPricingPage ? 'pricing-page-main' : isFaqPage ? 'faq-page-main' : isWhatWeDoPage ? 'what-we-do-page-main' : isWhatWeTakePage ? 'what-we-take-page-main' : isContactUsPage ? 'contact-us-page-main' : isAboutUsPage ? 'about-us-page-main' : knownPage ? 'home' : 'not-found-page-main'}>
-        {isBusinessPage ? <BusinessServices /> : isBookingPage ? <BookAppointment /> : isSignInPage || isRegisterPage ? <AuthPage initialMode={isRegisterPage ? 'register' : 'login'} /> : isAdminPage ? <AdminPage /> : isPricingPage ? <PricingPage /> : isFaqPage ? <FaqPage /> : isWhatWeDoPage ? <WhatWeDoPage /> : isWhatWeTakePage ? <WhatWeTakePage /> : isContactUsPage ? <ContactUsPage /> : isAboutUsPage ? <AboutUsPage /> : knownPage ? <>
+        {isBusinessPage ? <BusinessServices /> : isBookingPage ? <BookAppointment /> : isSignInPage || isRegisterPage ? <AuthPage initialMode={isRegisterPage ? 'register' : 'login'} /> : isAdminPage ? <AdminPage /> : isPricingPage ? <PricingPage /> : isFaqPage ? <FaqPage /> : isWhatWeDoPage ? <WhatWeDoPage /> : isWhatWeTakePage ? <WhatWeTakePage /> : isContactUsPage ? <ContactUsPage /> : isAboutUsPage ? <AboutUsPage /> : isPrivacyPage ? <LegalPage type="privacy" /> : isTermsPage ? <LegalPage type="terms" /> : knownPage ? <>
         <section className="hero">
           <div className="hero-pattern"></div>
           <div className="container hero-content">
@@ -213,7 +216,7 @@ function App() {
         </> : <NotFoundPage />}
       </main>
 
-      <footer className="site-footer"><div className="container footer-main"><div className="footer-brand-column"><a className="footer-brand" href="/" aria-label="DUMP RUNNERZ home"><img src="/dump-runnerz-logo.jpeg" alt="DUMP RUNNERZ" /></a><p>Fast, reliable junk removal for homes and businesses. You point to the items—we handle the heavy lifting.</p><a className="footer-phone" href="tel:1800555867"><span aria-hidden="true">☎</span> 1800 555 867</a></div><div className="footer-column"><h3>Explore</h3><a href="/what-we-do">What We Do</a><a href="/what-we-take">What We Take</a><a href="/pricing">How Pricing Works</a><a href="/faq">Frequently Asked Questions</a></div><div className="footer-column"><h3>Our Company</h3><a href="/about-us">About Us</a><a href="/business-services">Business Services</a><a href="/contact-us">Contact Us</a><a href="/book-appointment">Book An Appointment</a></div><div className="footer-action"><span className="footer-kicker">READY TO CLEAR SPACE?</span><h3>Let’s make your junk disappear.</h3><p>Choose a convenient time and get your pickup started.</p><a className="button footer-button" href="/book-appointment">Get Started <span aria-hidden="true">↗</span></a></div></div><div className="container footer-bottom"><span>© 2026 DUMP RUNNERZ. All rights reserved.</span><span>Professional junk removal made simple.</span><a href="tel:1800555867">Call us today</a></div></footer>
+      <footer className="site-footer"><div className="container footer-main"><div className="footer-brand-column"><a className="footer-brand" href="/" aria-label="DUMP RUNNERZ home"><img src="/dump-runnerz-logo.jpeg" alt="DUMP RUNNERZ" /></a><p>Fast, reliable junk removal for homes and businesses. You point to the items—we handle the heavy lifting.</p><a className="footer-phone" href="tel:1800555867"><span aria-hidden="true">☎</span> 1800 555 867</a></div><div className="footer-column"><h3>Explore</h3><a href="/what-we-do">What We Do</a><a href="/what-we-take">What We Take</a><a href="/pricing">How Pricing Works</a><a href="/faq">Frequently Asked Questions</a></div><div className="footer-column"><h3>Our Company</h3><a href="/about-us">About Us</a><a href="/business-services">Business Services</a><a href="/contact-us">Contact Us</a><a href="/book-appointment">Book An Appointment</a></div><div className="footer-action"><span className="footer-kicker">READY TO CLEAR SPACE?</span><h3>Let’s make your junk disappear.</h3><p>Choose a convenient time and get your pickup started.</p><a className="button footer-button" href="/book-appointment">Get Started <span aria-hidden="true">↗</span></a></div></div><div className="container footer-bottom"><span>© 2026 DUMP RUNNERZ. All rights reserved.</span><span>Professional junk removal made simple.</span><span className="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-and-conditions">Terms &amp; Conditions</a></span><a href="tel:1800555867">Call us today</a></div></footer>
     </div>
   );
 }
