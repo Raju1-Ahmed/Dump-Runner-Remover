@@ -1,9 +1,9 @@
-import heroImage from '../Asset/Hero/dump runner hero section image (1).png';
-import householdImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_51_39 PM.png';
-import movingImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_56_22 PM.png';
-import renovationImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_57_55 PM.png';
-import disasterImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 02_00_17 PM.png';
-import commercialImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 02_27_45 PM.png';
+import heroImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
+import householdImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
+import movingImage from '../Asset/dump_runnerz_01.jpg.jpeg';
+import renovationImage from '../Asset/dump_runnerz_16.jpg.jpeg';
+import disasterImage from '../Asset/dump_runnerz_25.jpg.jpeg';
+import commercialImage from '../Asset/file_00000000367481faa2da276dbd9617c8.png';
 import './what-we-do-page.css';
 
 const categories = [

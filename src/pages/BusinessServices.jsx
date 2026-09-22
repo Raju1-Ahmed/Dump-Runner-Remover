@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import './business-services.css';
-import commercialHero from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_51_39 PM.png';
-import propertyImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_56_22 PM.png';
-import renovationImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_57_55 PM.png';
-import furnitureImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 02_00_17 PM.png';
+import commercialHero from '../Asset/file_00000000367481faa2da276dbd9617c8.png';
+import propertyImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
+import renovationImage from '../Asset/dump_runnerz_16.jpg.jpeg';
+import furnitureImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
 
 const businessServices = [
   ['▦', 'Office Cleanouts', 'Remove unwanted furniture, equipment, clutter and general office waste quickly and efficiently.'],

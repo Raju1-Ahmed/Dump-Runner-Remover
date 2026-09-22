@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
-import heroImage from '../Asset/Hero/dump runner hero section image (3).png';
-import fridgeImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 02_32_17 PM.png';
-import mattressImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_51_39 PM.png';
-import furnitureImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_56_22 PM.png';
-import electronicsImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 02_00_17 PM.png';
+import heroImage from '../Asset/file_000000002f988230b6afa48a63d520b0.png';
+import fridgeImage from '../Asset/file_000000002f988230b6afa48a63d520b0.png';
+import mattressImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
+import furnitureImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
+import electronicsImage from '../Asset/file_00000000367481faa2da276dbd9617c8.png';
 import './what-we-take-page.css';
 
 const itemGroups = [

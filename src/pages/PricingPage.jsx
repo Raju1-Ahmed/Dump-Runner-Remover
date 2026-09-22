@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import heroImage from '../Asset/Hero/dump runner hero section image (2).png';
-import singleItemImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_51_39 PM.png';
-import multipleItemImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 01_56_22 PM.png';
-import capacityImage from '../Asset/Business Service/ChatGPT Image Sep 20, 2026, 02_27_45 PM.png';
+import heroImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
+import singleItemImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
+import multipleItemImage from '../Asset/file_00000000255c81faadc0cb8a3afdd725.png';
+import capacityImage from '../Asset/file_000000002f988230b6afa48a63d520b0.png';
 import './pricing-page.css';
 
 const volumeOptions = [
