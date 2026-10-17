@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import heroImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
-import singleItemImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
+import heroImage from '../Asset/replace image/dump_runnerz_01.jpg.jpeg';
+import singleItemImage from '../Asset/replace image/dump_runnerz_05.jpg.jpeg';
 import multipleItemImage from '../Asset/Orginal Image/New Image (2).jpeg';
 import capacityImage from '../Asset/Orginal Image/New Image (6).jpeg';
 import './pricing-page.css';

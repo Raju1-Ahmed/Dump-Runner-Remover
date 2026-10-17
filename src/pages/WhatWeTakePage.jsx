@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
 import heroImage from '../Asset/replace image/dump_runnerz_01.jpg.jpeg';
-import fridgeImage from '../Asset/dump_runnerz_18.jpg.jpeg';
+import fridgeImage from '../Asset/replace image/dump_runnerz_06.jpg.jpeg';
 import mattressImage from '../Asset/replace image/dump_runnerz_06.jpg.jpeg';
 import furnitureImage from '../Asset/replace image/dump_runnerz_01.jpg.jpeg';
-import electronicsImage from '../Asset/file_00000000367481faa2da276dbd9617c8.png';
+import electronicsImage from '../Asset/dump_runnerz_18.jpg.jpeg';
 import './what-we-take-page.css';
 
 const itemGroups = [
@@ -21,7 +21,7 @@ const featured = [
   ['Refrigerators & freezers', 'Fridges, freezers and compact cooling appliances.', fridgeImage, 'Refrigerator and freezer removal examples'],
   ['Mattresses & box springs', 'Foam, memory foam, futons and box springs.', mattressImage, 'Mattress and box spring removal examples'],
   ['Furniture', 'Couches, tables, beds, bookcases and more.', furnitureImage, 'Furniture removal examples'],
-  ['Televisions & electronics', 'TVs, computers, monitors, printers and accessories.', electronicsImage, 'Television and electronics removal examples'],
+  ['Televisions & electronics', 'TVs, computers, monitors, printers and accessories.', electronicsImage, 'Bulky appliance and electronics removal examples'],
 ];
 
 const notAccepted = ['Chemicals, solvents and oils', 'Asbestos', 'Storage and oil drums', 'Oil and waste storage tanks'];

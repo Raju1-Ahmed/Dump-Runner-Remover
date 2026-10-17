@@ -3,7 +3,7 @@ import householdImage from '../Asset/replace image/dump_runnerz_05.jpg.jpeg';
 import movingImage from '../Asset/replace image/dump_runnerz_20.jpg.jpeg';
 import renovationImage from '../Asset/replace image/dump_runnerz_07.jpg.jpeg';
 import disasterImage from '../Asset/replace image/dump_runnerz_16.jpg.jpeg';
-import commercialImage from '../Asset/file_00000000367481faa2da276dbd9617c8.png';
+import commercialImage from '../Asset/replace image/dump_runnerz_20.jpg.jpeg';
 import './what-we-do-page.css';
 
 const categories = [
