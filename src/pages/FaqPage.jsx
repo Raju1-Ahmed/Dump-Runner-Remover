@@ -39,7 +39,7 @@ const faqCategories = [
       ['Do you service my area?', 'Enter your details during booking or contact our team to check whether DUMP RUNNERZ currently services your location.'],
       ['Do you offer business rubbish removal?', 'Yes. We can discuss recurring or one-off clean-outs for offices, retail spaces, property managers and other businesses.'],
       ['What if access to my items is difficult?', 'Tell us about narrow access, stairs, elevators, long carries or parking restrictions when you request an estimate.'],
-      ['How can I contact the team?', 'Call 1800 555 867 or use the Book An Appointment page to send your pickup details online.'],
+      ['How can I contact the team?', 'Call 0452 564 662 or use the Book An Appointment page to send your pickup details online.'],
     ],
   },
 ];
@@ -74,6 +74,6 @@ export default function FaqPage() {
       </div>
     </section>
 
-    <section className="faq-help"><div className="container faq-help-inner"><div><p className="eyebrow">NEED MORE HELP?</p><h2>Still have<br /><em>questions?</em></h2><p>Our friendly team can help you understand your options and find the right next step.</p></div><div className="pricing-actions"><a className="button button-primary" href="tel:1800555867">Contact Us ↗</a><a className="button button-outline-dark" href="/book-appointment">Book An Appointment</a></div></div></section>
+    <section className="faq-help"><div className="container faq-help-inner"><div><p className="eyebrow">NEED MORE HELP?</p><h2>Still have<br /><em>questions?</em></h2><p>Our friendly team can help you understand your options and find the right next step.</p></div><div className="pricing-actions"><a className="button button-primary" href="tel:0452564662">Contact Us ↗</a><a className="button button-outline-dark" href="/book-appointment">Book An Appointment</a></div></div></section>
   </div>;
 }
