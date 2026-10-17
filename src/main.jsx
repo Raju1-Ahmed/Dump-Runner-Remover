@@ -7,7 +7,7 @@ import heroImage1 from './Asset/replace image/dump_runnerz_01.jpg.jpeg';
 import heroImage4 from './Asset/replace image/dump_runnerz_28.jpg.jpeg';
 import serviceImage1 from './Asset/replace image/dump_runnerz_05.jpg.jpeg';
 import serviceImage2 from './Asset/dump_runnerz_18.jpg.jpeg';
-import serviceImage3 from './Asset/file_00000000367481faa2da276dbd9617c8.png';
+import serviceImage3 from './Asset/replace image/dump_runnerz_28.jpg.jpeg';
 import serviceImage4 from './Asset/dump_runnerz_16.jpg.jpeg';
 import galleryImage1 from './Asset/replace image/dump_runnerz_04.jpg.jpeg';
 import galleryImage2 from './Asset/replace image/dump_runnerz_07.jpg.jpeg';

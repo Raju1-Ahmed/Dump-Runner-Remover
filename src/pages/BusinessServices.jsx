@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import './business-services.css';
-import commercialHero from '../Asset/file_00000000367481faa2da276dbd9617c8.png';
-import propertyImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
-import renovationImage from '../Asset/dump_runnerz_16.jpg.jpeg';
-import furnitureImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
+import commercialHero from '../Asset/replace image/dump_runnerz_20.jpg.jpeg';
+import propertyImage from '../Asset/replace image/dump_runnerz_28.jpg.jpeg';
+import renovationImage from '../Asset/replace image/dump_runnerz_16.jpg.jpeg';
+import furnitureImage from '../Asset/replace image/dump_runnerz_01.jpg.jpeg';
 
 const businessServices = [
   ['▦', 'Office Cleanouts', 'Remove unwanted furniture, equipment, clutter and general office waste quickly and efficiently.'],
@@ -20,7 +20,7 @@ const benefits = [
   ['↗', 'Fast Rubbish Removal', 'Keep projects moving and workspaces clear.'],
   ['✓', 'Upfront Quote', 'Know what to expect before the work begins.'],
   ['↕', 'We Handle the Heavy Lifting', 'Your employees can stay focused on their jobs.'],
-  ['♻', 'Responsible Disposal', 'We sort items for reuse, recycling and disposal where possible.'],
+  ['↻', 'Responsible Disposal', 'We sort items for reuse, recycling and disposal where possible.'],
   ['▰', 'Small or Large Jobs', 'Practical support for everyday needs and major clear-outs.'],
   ['☼', 'Hassle-Free Service', 'A simple process from booking through to clean-up.'],
 ];
@@ -33,7 +33,7 @@ const showcases = [
 ];
 
 const steps = [
-  ['01', '⌕', 'Book Your Pickup', 'Choose the service and tell us what needs to be removed.'],
+  ['01', '◷', 'Book Your Pickup', 'Choose the service and tell us what needs to be removed.'],
   ['02', '→', 'We Arrive', 'Our team arrives at the scheduled time.'],
   ['03', '▣', 'Get Your Quote', 'Receive a clear quote based on the rubbish that needs to be removed.'],
   ['04', '✦', 'We Load & Clear', 'We handle the heavy lifting and leave your space cleaner.'],
@@ -60,33 +60,28 @@ export default function BusinessServices() {
   return (
     <div className="business-page">
       <section className="business-hero">
-        <img src={commercialHero} alt="Commercial rubbish removal team clearing an office" />
+        <img src={commercialHero} alt="DUMP RUNNERZ team helping a customer with furniture removal" fetchPriority="high" decoding="async" />
         <div className="business-hero-overlay"></div>
         <div className="container business-hero-content">
           <p className="business-kicker">COMMERCIAL RUBBISH REMOVAL</p>
           <h1>Commercial Rubbish<br /><em>Removal Made Simple</em></h1>
           <p className="business-hero-copy">Reliable rubbish removal solutions for offices, retail businesses, property managers, renovation projects and commercial spaces.</p>
-          <div className="business-actions"><a className="button button-primary" href="#commercial-booking">Book a Pickup <span>↗</span></a><a className="business-outline-button" href="#commercial-quote">Get a Free Quote</a></div>
+          <div className="business-actions"><a className="button button-primary" href="/book-appointment">Book a Pickup <span aria-hidden="true">↗</span></a><a className="business-outline-button" href="#commercial-quote">Get a Free Quote</a></div>
           <p className="business-trust">Professional <b>•</b> Reliable <b>•</b> Flexible <b>•</b> Business Friendly</p>
         </div>
       </section>
 
-      <section className="business-section" id="business-services">
-        <div className="container">
-          <div className="business-section-heading"><div><p className="business-kicker red">HOW WE HELP BUSINESSES</p><h2>Built around<br /><em>your business.</em></h2></div><p>From small business cleanouts to large commercial rubbish removal projects, we make the process simple and hassle-free.</p></div>
-          <div className="business-service-grid">{businessServices.map(([icon, title, text]) => <article className="business-service-card" key={title}><span className="business-card-icon">{icon}</span><h3>{title}</h3><p>{text}</p><a href="#commercial-booking" aria-label={`Learn more about ${title}`}>Learn more <span>↗</span></a></article>)}</div>
-        </div>
-      </section>
+      <section className="business-section" id="business-services"><div className="container"><div className="business-section-heading"><div><p className="business-kicker red">HOW WE HELP BUSINESSES</p><h2>Built around<br /><em>your business.</em></h2></div><p>From small business cleanouts to large commercial rubbish removal projects, we make the process simple and hassle-free.</p></div><div className="business-service-grid">{businessServices.map(([icon, title, text]) => <article className="business-service-card" key={title}><span className="business-card-icon" aria-hidden="true">{icon}</span><h3>{title}</h3><p>{text}</p><a href="#commercial-booking" aria-label={`Learn more about ${title}`}>Learn more <span aria-hidden="true">↗</span></a></article>)}</div></div></section>
 
-      <section className="business-benefits-section"><div className="container"><div className="business-section-heading benefits-heading"><div><p className="business-kicker red">A BETTER WAY TO CLEAR OUT</p><h2>Why businesses<br /><em>choose us.</em></h2></div><p>Professional support that keeps your people productive and your spaces ready for what comes next.</p></div><div className="benefits-grid">{benefits.map(([icon, title, text]) => <div className="benefit-item" key={title}><span>{icon}</span><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></div></section>
+      <section className="business-benefits-section"><div className="container"><div className="business-section-heading benefits-heading"><div><p className="business-kicker red">A BETTER WAY TO CLEAR OUT</p><h2>Why businesses<br /><em>choose us.</em></h2></div><p>Professional support that keeps your people productive and your spaces ready for what comes next.</p></div><div className="benefits-grid">{benefits.map(([icon, title, text]) => <div className="benefit-item" key={title}><span aria-hidden="true">{icon}</span><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></div></section>
 
-      <section className="productivity-section"><div className="container productivity-grid"><div className="productivity-image"><img src={propertyImage} alt="DUMP RUNNERZ team clearing commercial furniture" loading="lazy" /></div><div className="productivity-copy"><p className="business-kicker red">LESS CLUTTER. MORE PRODUCTIVITY.</p><h2>Let Your Team<br /><em>Focus on Business</em></h2><p>Your employees should be focused on running your business, not moving heavy furniture, clearing unwanted items or dealing with rubbish. Let our team handle the removal while your team gets back to work.</p><a className="button button-primary" href="#commercial-quote">Request a Free Quote <span>↗</span></a></div></div></section>
+      <section className="productivity-section"><div className="container productivity-grid"><div className="productivity-image"><img src={propertyImage} alt="DUMP RUNNERZ team helping with a property cleanout" loading="lazy" decoding="async" /></div><div className="productivity-copy"><p className="business-kicker red">LESS CLUTTER. MORE PRODUCTIVITY.</p><h2>Let Your Team<br /><em>Focus on Business</em></h2><p>Your employees should be focused on running your business, not moving heavy furniture, clearing unwanted items or dealing with rubbish. Let our team handle the removal while your team gets back to work.</p><a className="button button-primary" href="#commercial-quote">Request a Free Quote <span aria-hidden="true">↗</span></a></div></div></section>
 
-      <section className="showcase-section"><div className="container"><div className="centered-business-heading"><p className="business-kicker red">ONE TEAM. MANY SOLUTIONS.</p><h2>Commercial Rubbish Removal<br /><em>for Every Business</em></h2></div><div className="showcase-grid">{showcases.map(([image, title, text]) => <a href="#commercial-booking" className="showcase-card" key={title}><img src={image} alt={`${title} rubbish removal service`} loading="lazy" /><span className="showcase-shade"></span><div><h3>{title}</h3><p>{text}</p><span className="showcase-arrow">↗</span></div></a>)}</div></div></section>
+      <section className="showcase-section"><div className="container"><div className="centered-business-heading"><p className="business-kicker red">ONE TEAM. MANY SOLUTIONS.</p><h2>Commercial Rubbish Removal<br /><em>for Every Business</em></h2></div><div className="showcase-grid">{showcases.map(([image, title, text]) => <a href="#commercial-booking" className="showcase-card" key={title}><img src={image} alt={`${title} rubbish removal service`} loading="lazy" decoding="async" /><span className="showcase-shade"></span><div><h3>{title}</h3><p>{text}</p><span className="showcase-arrow" aria-hidden="true">↗</span></div></a>)}</div></div></section>
 
-      <section className="process-section"><div className="container"><div className="centered-business-heading"><p className="business-kicker">SIMPLE FROM START TO FINISH</p><h2>How It Works</h2></div><div className="process-grid">{steps.map(([number, icon, title, text]) => <article className="process-card" key={number}><span className="process-number">{number}</span><span className="process-icon">{icon}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+      <section className="process-section"><div className="container"><div className="centered-business-heading"><p className="business-kicker">SIMPLE FROM START TO FINISH</p><h2>How It Works</h2></div><div className="process-grid">{steps.map(([number, icon, title, text]) => <article className="process-card" key={number}><span className="process-number">{number}</span><span className="process-icon" aria-hidden="true">{icon}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
-      <section className="commercial-cta" id="commercial-booking"><div className="container commercial-cta-inner"><div><p className="business-kicker">READY WHEN YOU ARE</p><h2>Ready to Clear Your<br /><em>Commercial Space?</em></h2><p>Whether it’s an office cleanout, retail space, property cleanup or renovation waste, we’re ready to help.</p></div><div className="business-actions"><a className="button button-primary" href="tel:0452564662">Book a Pickup <span>↗</span></a><a className="business-outline-button" id="commercial-quote" href="mailto:info@dumprunnerz.com.au">Get a Free Quote</a></div></div></section>
+      <section className="commercial-cta" id="commercial-booking"><div className="container commercial-cta-inner"><div><p className="business-kicker">READY WHEN YOU ARE</p><h2>Ready to Clear Your<br /><em>Commercial Space?</em></h2><p>Whether it’s an office cleanout, retail space, property cleanup or renovation waste, we’re ready to help.</p></div><div className="business-actions"><a className="button button-primary" href="/book-appointment">Book a Pickup <span aria-hidden="true">↗</span></a><a className="business-outline-button" id="commercial-quote" href="mailto:info@dumprunnerz.com.au">Get a Free Quote</a></div></div></section>
     </div>
   );
 }
