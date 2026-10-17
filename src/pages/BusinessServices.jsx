@@ -60,7 +60,7 @@ export default function BusinessServices() {
   return (
     <div className="business-page">
       <section className="business-hero">
-        <img src={commercialHero} alt="Commercial rubbish removal team loading a truck" />
+        <img src={commercialHero} alt="Commercial rubbish removal team clearing an office" />
         <div className="business-hero-overlay"></div>
         <div className="container business-hero-content">
           <p className="business-kicker">COMMERCIAL RUBBISH REMOVAL</p>

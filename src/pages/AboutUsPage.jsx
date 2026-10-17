@@ -1,14 +1,14 @@
-import teamImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
-import cleanoutImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
-import greenWasteImage from '../Asset/file_00000000255c81faadc0cb8a3afdd725.png';
-import customerImage from '../Asset/dump_runnerz_19.jpg.jpeg';
+import teamImage from '../Asset/replace image/dump_runnerz_01.jpg.jpeg';
+import cleanoutImage from '../Asset/replace image/dump_runnerz_05.jpg.jpeg';
+import greenWasteImage from '../Asset/replace image/dump_runnerz_04.jpg.jpeg';
+import customerImage from '../Asset/replace image/dump_runnerz_20.jpg.jpeg';
 import './about-us-page.css';
 
 function Arrow() { return <span aria-hidden="true">↗</span>; }
 
 export default function AboutUsPage() {
   return <div className="about-page">
-    <section className="about-hero"><div className="container about-hero-inner"><div><p className="eyebrow">THE DUMP RUNNERZ STORY</p><h1>More space.<br /><em>Less stress.</em></h1><p>We make junk removal simple for homes, businesses and the people who need a clear space without the heavy lifting.</p><div className="about-hero-actions"><a className="button button-primary" href="/book-appointment">Book a Pickup <Arrow /></a><a className="button button-ghost" href="tel:0452564662">Call 0452 564 662</a></div></div><div className="about-hero-photo"><img src={teamImage} alt="DUMP RUNNERZ team carrying furniture to a removal truck" /><span>WE LOAD.<br /><strong>YOU RELAX.</strong></span></div></div></section>
+    <section className="about-hero"><div className="container about-hero-inner"><div><p className="eyebrow">THE DUMP RUNNERZ STORY</p><h1>More space.<br /><em>Less stress.</em></h1><p>We make junk removal simple for homes, businesses and the people who need a clear space without the heavy lifting.</p><div className="about-hero-actions"><a className="button button-primary" href="/book-appointment">Book a Pickup <Arrow /></a><a className="button button-ghost" href="tel:0452564662">Call 0452 564 662</a></div></div><div className="about-hero-photo"><img src={teamImage} alt="DUMP RUNNERZ team carrying furniture for removal" /><span>WE LOAD.<br /><strong>YOU RELAX.</strong></span></div></div></section>
 
     <section className="about-intro"><div className="container about-intro-grid"><div><p className="eyebrow">WHO WE ARE</p><h2>Junk removal<br /><em>done properly.</em></h2></div><div><p>DUMP RUNNERZ is a full-service junk removal team built to take the hassle out of clearing unwanted items. From one bulky piece of furniture to a larger property clean-out, we help you get your space back.</p><p>Our approach is straightforward: understand what needs to go, handle the lifting and loading, and keep the process clear from start to finish.</p><a className="text-link" href="/what-we-do">See what we do <Arrow /></a></div></div></section>
 

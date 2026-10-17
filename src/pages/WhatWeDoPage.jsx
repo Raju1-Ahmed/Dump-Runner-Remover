@@ -1,8 +1,8 @@
-import heroImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
-import householdImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
-import movingImage from '../Asset/dump_runnerz_01.jpg.jpeg';
-import renovationImage from '../Asset/dump_runnerz_16.jpg.jpeg';
-import disasterImage from '../Asset/dump_runnerz_25.jpg.jpeg';
+import heroImage from '../Asset/replace image/dump_runnerz_01.jpg.jpeg';
+import householdImage from '../Asset/replace image/dump_runnerz_05.jpg.jpeg';
+import movingImage from '../Asset/replace image/dump_runnerz_20.jpg.jpeg';
+import renovationImage from '../Asset/replace image/dump_runnerz_07.jpg.jpeg';
+import disasterImage from '../Asset/replace image/dump_runnerz_16.jpg.jpeg';
 import commercialImage from '../Asset/file_00000000367481faa2da276dbd9617c8.png';
 import './what-we-do-page.css';
 

@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
-import heroImage from '../Asset/file_000000002f988230b6afa48a63d520b0.png';
-import fridgeImage from '../Asset/file_000000002f988230b6afa48a63d520b0.png';
-import mattressImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
-import furnitureImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
+import heroImage from '../Asset/replace image/dump_runnerz_01.jpg.jpeg';
+import fridgeImage from '../Asset/dump_runnerz_18.jpg.jpeg';
+import mattressImage from '../Asset/replace image/dump_runnerz_06.jpg.jpeg';
+import furnitureImage from '../Asset/replace image/dump_runnerz_01.jpg.jpeg';
 import electronicsImage from '../Asset/file_00000000367481faa2da276dbd9617c8.png';
 import './what-we-take-page.css';
 

@@ -3,25 +3,21 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 import './before-after.css';
 import './hero-modern.css';
-import heroImage1 from './Asset/file_00000000978881f5b8dd22e28b780b49.png';
-import heroImage2 from './Asset/file_00000000255c81faadc0cb8a3afdd725.png';
-import heroImage3 from './Asset/file_000000002f988230b6afa48a63d520b0.png';
-import heroImage4 from './Asset/file_0000000096cc81f58f838e2774e509ca.png';
-import serviceImage1 from './Asset/file_0000000096cc81f58f838e2774e509ca.png';
-import serviceImage2 from './Asset/file_000000002f988230b6afa48a63d520b0.png';
+import heroImage1 from './Asset/replace image/dump_runnerz_01.jpg.jpeg';
+import heroImage4 from './Asset/replace image/dump_runnerz_28.jpg.jpeg';
+import serviceImage1 from './Asset/replace image/dump_runnerz_05.jpg.jpeg';
+import serviceImage2 from './Asset/dump_runnerz_18.jpg.jpeg';
 import serviceImage3 from './Asset/file_00000000367481faa2da276dbd9617c8.png';
 import serviceImage4 from './Asset/dump_runnerz_16.jpg.jpeg';
-import galleryImage1 from './Asset/dump_runnerz_01.jpg.jpeg';
-import galleryImage2 from './Asset/dump_runnerz_22.jpg.jpeg';
-import galleryImage3 from './Asset/dump_runnerz_30.jpg.jpeg';
+import galleryImage1 from './Asset/replace image/dump_runnerz_04.jpg.jpeg';
+import galleryImage2 from './Asset/replace image/dump_runnerz_07.jpg.jpeg';
+import galleryImage3 from './Asset/replace image/dump_runnerz_28.jpg.jpeg';
 import garageAfter from './Asset/Orginal Image/New Image (1).jpeg';
 import garageBefore from './Asset/Orginal Image/New Image (2).jpeg';
 import yardAfter from './Asset/Orginal Image/New Image (3).jpeg';
 import yardBefore from './Asset/Orginal Image/New Image (4).jpeg';
 import gardenAfter from './Asset/Orginal Image/New Image (5).jpeg';
 import gardenBefore from './Asset/Orginal Image/New Image (6).jpeg';
-import truckAfter from './Asset/Orginal Image/New Image (7).jpeg';
-import truckBefore from './Asset/Orginal Image/New Image (8).jpeg';
 import BusinessServices from './pages/BusinessServices';
 import BookAppointment from './pages/BookAppointment';
 import AuthPage from './pages/AuthPage';
@@ -56,7 +52,7 @@ const services = [
   { icon: '▰', title: 'Furniture', text: 'Sofas, beds, tables and bulky furniture removed with care.' },
   { icon: '▧', title: 'Renovation debris', text: 'Make space after a renovation, move or building project.' },
 ];
-const heroImages = [truckAfter, heroImage2, yardAfter, heroImage4];
+const heroImages = [garageAfter, heroImage1, yardAfter, heroImage4];
 const homeServices = [
   { image: serviceImage1, title: 'Household clutter', text: 'Clear out unwanted items, boxes and everyday rubbish.', href: '/what-we-take', alt: 'Household items ready for removal' },
   { image: serviceImage2, title: 'Appliances', text: 'Make space by removing old fridges and bulky appliances.', href: '/what-we-take', alt: 'Refrigerator removal service' },
@@ -169,12 +165,11 @@ function App() {
                 <a className="button button-ghost" href="tel:0452564662">Call 0452 564 662</a>
               </div>
               <div className="hero-proof"><span>✓</span> Homes &amp; businesses &nbsp; <span>✓</span> Friendly removal team</div>
-              <div className="hero-contact-proof"><span>QUICK RESPONSE</span><a href="tel:0452564662">0452 564 662</a><small>Garage cleanouts · Green waste · Renovation debris</small></div>
             </div>
             <div className="hero-visual" aria-label="DUMP RUNNERZ junk removal team">
               <div className="hero-image-frame">
                 <img src={heroImages[activeHero]} alt="DUMP RUNNERZ team removing unwanted items" />
-                <div className="sun-badge">FAST<br /><strong>&amp; EASY</strong></div>
+                {/* <div className="sun-badge">FAST<br /><strong>&amp; EASY</strong></div> */}
                 <div className="visual-card"><strong>Need it gone?</strong><span>We do the heavy lifting.</span></div>
               </div>
               <div className="hero-dots" aria-label="Hero image selector">
@@ -219,7 +214,7 @@ function App() {
 
         <section className="trust-section" id="why-us"><div className="container trust-inner"><div><p className="eyebrow">WHY DUMP RUNNERZ</p><h2>A clearer way to reclaim your space.</h2><p className="trust-description">From the first booking detail to the final load, we keep the process simple and practical.</p></div><div className="trust-points"><div><strong>01</strong><span>Book online</span></div><div><strong>02</strong><span>We do the lifting</span></div><div><strong>03</strong><span>Clear next steps</span></div></div></div></section>
 
-        <section className="home-gallery"><div className="container"><div className="section-heading split-heading"><div><p className="eyebrow">REAL PROJECT RESULTS</p><h2>Before the mess.<br /><em>After the clear.</em></h2></div><p>See the difference DUMP RUNNERZ makes—from garage cleanouts and green waste removal to loading renovation debris safely and efficiently.</p></div><div className="before-after-grid"><article className="before-after-card"><div className="before-after-images"><figure><img src={garageBefore} alt="Garage filled with unwanted furniture and household clutter before removal" /><figcaption>Before</figcaption></figure><figure><img src={garageAfter} alt="Clean empty garage after junk removal" /><figcaption>After</figcaption></figure></div><h3>Garage cleanout</h3><p>Household clutter, furniture and stored items removed to reclaim usable space.</p></article><article className="before-after-card"><div className="before-after-images"><figure><img src={yardBefore} alt="Backyard covered with green waste and broken bricks before removal" /><figcaption>Before</figcaption></figure><figure><img src={yardAfter} alt="Cleared backyard ready for use after green waste removal" /><figcaption>After</figcaption></figure></div><h3>Green waste &amp; debris</h3><p>Branches, palm fronds and renovation debris cleared from a residential yard.</p></article><article className="before-after-card"><div className="before-after-images"><figure><img src={gardenBefore} alt="Garden with piled green waste and bricks before cleanup" /><figcaption>Before</figcaption></figure><figure><img src={gardenAfter} alt="Freshly cleared garden with lawn restored after cleanup" /><figcaption>After</figcaption></figure></div><h3>Garden cleanup</h3><p>Unwanted garden waste loaded and removed so the outdoor area can be enjoyed again.</p></article><article className="before-after-card"><div className="before-after-images"><figure><img src={truckBefore} alt="DUMP RUNNERZ van ready for a pickup before loading" /><figcaption>Before</figcaption></figure><figure><img src={truckAfter} alt="DUMP RUNNERZ van loaded with removal items and debris" /><figcaption>After</figcaption></figure></div><h3>Pickup in action</h3><p>From the first load to the final trailer, our branded vehicle is ready to do the heavy lifting.</p></article></div></div></section>
+        <section className="home-gallery"><div className="container"><div className="section-heading split-heading"><div><p className="eyebrow">REAL PROJECT RESULTS</p><h2>Before the mess.<br /><em>After the clear.</em></h2></div><p>See the difference DUMP RUNNERZ makes—from garage cleanouts and green waste removal to loading renovation debris safely and efficiently.</p></div><div className="before-after-grid"><article className="before-after-card"><div className="before-after-images"><figure><img src={garageBefore} alt="Garage filled with unwanted furniture and household clutter before removal" /></figure><figure><img src={garageAfter} alt="Clean empty garage after junk removal" /></figure></div><h3>Garage cleanout</h3><p>Household clutter, furniture and stored items removed to reclaim usable space.</p></article><article className="before-after-card"><div className="before-after-images"><figure><img src={yardBefore} alt="Backyard covered with green waste and broken bricks before removal" /></figure><figure><img src={yardAfter} alt="Cleared backyard ready for use after green waste removal" /></figure></div><h3>Green waste &amp; debris</h3><p>Branches, palm fronds and renovation debris cleared from a residential yard.</p></article><article className="before-after-card"><div className="before-after-images"><figure><img src={gardenBefore} alt="Garden with piled green waste and bricks before cleanup" /></figure><figure><img src={gardenAfter} alt="Freshly cleared garden with lawn restored after cleanup" /></figure></div><h3>Garden cleanup</h3><p>Unwanted garden waste loaded and removed so the outdoor area can be enjoyed again.</p></article></div></div></section>
 
         <section className="home-faq-preview"><div className="container home-faq-inner"><div><p className="eyebrow">QUICK ANSWERS</p><h2>Have a question<br /><em>before you book?</em></h2><p>Find answers about pricing, appointments, accepted items and our service process.</p></div><div className="home-faq-links"><a href="/faq">How does junk removal pricing work? <Arrow /></a><a href="/faq">What items can you remove? <Arrow /></a><a href="/faq">How do I book a pickup? <Arrow /></a><a className="text-link" href="/faq">Visit all FAQs <Arrow /></a></div></div></section>
 

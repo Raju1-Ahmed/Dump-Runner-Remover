@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import heroImage from '../Asset/file_00000000978881f5b8dd22e28b780b49.png';
 import singleItemImage from '../Asset/file_0000000096cc81f58f838e2774e509ca.png';
-import multipleItemImage from '../Asset/file_00000000255c81faadc0cb8a3afdd725.png';
-import capacityImage from '../Asset/file_000000002f988230b6afa48a63d520b0.png';
+import multipleItemImage from '../Asset/Orginal Image/New Image (2).jpeg';
+import capacityImage from '../Asset/Orginal Image/New Image (6).jpeg';
 import './pricing-page.css';
 
 const volumeOptions = [
@@ -46,7 +46,7 @@ export default function PricingPage() {
           <p>Simple, transparent junk removal pricing. We make it easy to understand your options and get an estimate.</p>
           <div className="pricing-actions"><a className="button button-primary" href="/book-appointment">Get a Free Estimate <Arrow /></a><a className="button button-ghost" href="#pricing-overview">Explore Pricing</a></div>
         </div>
-        <div className="pricing-hero-photo"><img src={heroImage} alt="DUMP RUNNERZ team loading a junk removal truck" /><span className="pricing-photo-badge">NO<br /><strong>SURPRISES</strong></span></div>
+        <div className="pricing-hero-photo"><img src={heroImage} alt="DUMP RUNNERZ team handling furniture for removal" /><span className="pricing-photo-badge">NO<br /><strong>SURPRISES</strong></span></div>
       </div>
     </section>
 
